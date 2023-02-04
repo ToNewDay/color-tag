@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 import React, { useMemo } from "react";
 import useSwr from "swr";
 
-import { useCtx } from "@/context";
-import { API } from "@/constants/types";
 import { SWR_KEY } from "@/constants";
+import { API } from "@/constants/types";
+import { useCtx } from "@/context";
 
 const ColorTagContainer = styled.div`
   padding: 0 10px;

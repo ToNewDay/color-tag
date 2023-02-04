@@ -10,6 +10,7 @@ export interface IContext {
   solts: {
     tagItems: Component.TagItemsType;
     tagPicker: Component.TagPickerType;
+    tagManagement: Component.TagManagementType;
     uikit: {
       input: Uikit.InputType;
       button: Uikit.ButtonType;

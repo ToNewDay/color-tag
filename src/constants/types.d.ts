@@ -61,6 +61,10 @@ declare namespace Component {
     showFooter?: boolean;
   };
   type TagPickerType = React.FC<TagPickerProps>;
+
+  type TagManagementProps = {};
+
+  type TagManagementType = React.FC<TagManagementProps>;
 }
 
 /**

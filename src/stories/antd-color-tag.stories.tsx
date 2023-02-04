@@ -1,5 +1,6 @@
 import { TagCreate } from "@/components/tag-create";
 import { TagItems } from "@/components/tag-items";
+import { API } from "@/constants/types";
 import { Context } from "@/context";
 import styled from "@emotion/styled";
 import { ComponentMeta } from "@storybook/react";
@@ -39,7 +40,29 @@ const TAG_LIST = COLOR_TAG_LIST.map((c, i) => ({
   color: c,
 }));
 
-const getTagList = () => Promise.resolve(TAG_LIST);
+const getTagList: API.GetTagList = (param) => {
+  console.log('get tag list', param)
+  if (!param) {
+    return Promise.resolve({
+      data: TAG_LIST,
+      count: TAG_LIST.length
+    });
+  }
+
+  return new Promise((r, j) => {
+
+    setTimeout(() => {
+      r({
+        data: TAG_LIST.slice(0, param.limit).map(t => ({
+          ...t,
+          id: `${param.offset}-${t.id}`,
+          name: `${param.offset}-${t.name}`
+        })),
+        count: TAG_LIST.length * 3
+      })
+    }, 1000)
+  })
+}
 
 const createTag = (param: any) =>
   new Promise<any>((r, j) => {
@@ -84,7 +107,7 @@ export const ColorTagExample = () => {
 
 export const TagItemsComponent = () => {
   return (
-    <div style={{ display: "flex",padding:"20px 40px" }}>
+    <div style={{ display: "flex", padding: "20px 40px" }}>
       <TagItems tagsList={TAG_LIST} value={["1", "2", "3"]} />
     </div>
   );

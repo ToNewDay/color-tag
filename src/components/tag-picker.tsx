@@ -153,8 +153,10 @@ export const TagPicker: Component.TagPickerType = ({
   const [marginTop, setMarginTop] = useState(0);
 
   const {
-    solts: { uikit },
+    solts
   } = useCtx();
+
+  const { uikit } = solts
 
   useEffect(() => {
     if (!refDropdownTriger.current) return;
@@ -314,7 +316,7 @@ export const TagPicker: Component.TagPickerType = ({
         onCancel={() => setShowTagsManagement(false)}
         onOk={() => setShowTagsManagement(false)}
       >
-        {/* <TagManagement /> */}
+        <solts.tagManagement />
       </uikit.modal>
     </>
   );
